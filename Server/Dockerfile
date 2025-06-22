@@ -1,12 +1,11 @@
 FROM node:24-alpine3.21
 
-COPY server.js /app/server.js
-COPY package.json /app/package.json
-COPY package-lock.json /app/package-lock.json
-
-EXPOSE 8000
-
 WORKDIR /app
+
+COPY package*.json ./
+
 RUN npm install
+
+COPY server.js server.js
 
 CMD ["npm", "run", "dev"]
